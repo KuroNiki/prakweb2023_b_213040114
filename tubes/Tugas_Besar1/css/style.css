@@ -1,0 +1,31 @@
+.navbar {
+  background-color: #0b0c2a;
+}
+
+.navbar_logo img {
+  position: relative;
+  left: 1cm;
+}
+
+#navbarmenu {
+  margin-left: 25px;
+  margin-right: 25px;
+  color: #fff;
+}
+
+.navbar-toggler-icon img {
+  width: 16px;
+}
+
+.navbar-toggler {
+  margin: 0 20px 2px 14px;
+  font-size: 12px;
+  border: 1px solid white;
+}
+
+.hero img {
+  grid-area: hero;
+  height: 350px;
+  /* background-image: url(/img/fullmetal_Sampul.jpg); */
+  background-size: cover;
+}
