@@ -1,9 +1,11 @@
 body {
-  padding-bottom: 1000px;
+  padding-bottom: 100px;
+  background-color: #060718;
 }
 
 .navbar {
   background-color: #0b0c2a;
+  margin-bottom: 30px;
 }
 
 .navbar_logo img {
@@ -14,7 +16,7 @@ body {
 #navbarmenu {
   margin-left: 25px;
   margin-right: 25px;
-  color: #fff;
+  color: white;
 }
 
 .navbar-toggler-icon img {
@@ -27,9 +29,17 @@ body {
   border: 1px solid white;
 }
 
+.form .btn btn-outline-success {
+  margin: 15px;
+}
+
 .hero img {
   grid-area: hero;
   height: 350px;
   /* background-image: url(/img/fullmetal_Sampul.jpg); */
   background-size: cover;
+}
+
+.col  h2 {
+  padding-bottom: 20px;
 }

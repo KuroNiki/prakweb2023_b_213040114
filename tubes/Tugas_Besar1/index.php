@@ -2,6 +2,11 @@
 require 'functions.php';
 $complete = query("SELECT * FROM complete");
 
+
+///ketika tombol cari di klik
+if( isset($_POST["cari"]) ) {
+  $complete = cari($_POST["keyword"]);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,16 +46,16 @@ $complete = query("SELECT * FROM complete");
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Lain </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Top10</a></li>
-              <li><a class="dropdown-item" href="./index.php">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Top10 Anime dari daftar animelist</a></li>
+              <li><a class="dropdown-item" href="./index.php">Log-In</a></li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Log-Out</a></li>
             </ul>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <form action="" method="post" >
+          <input type="text" name="keyword" size="50" placeholder="Cari Anime,,," autocomplete="off" />
+          <button type="submit" class="btn btn-outline-success" name="cari" style="margin-left: 15px;">cari</button>
         </form>
       </div>
     </nav>
@@ -58,14 +63,15 @@ $complete = query("SELECT * FROM complete");
     <!-- end navbar -->
 
     <!-- header -->
-    <section id="header" style="background-color: #0a0b27;">
+    <section id="header">
       <div class="container">
-        <div class="row text-center">
-          <div class="col"light>
+        <div class="row text-center" style="color: white;">
+          <div class="col">
             <h2>Baru Tamat</h2>
           </div>
         </div>
-        <div class="row">
+        <a href="tambah.php">Tambah Data Anime Tamat</a>
+        <div class="row" style="padding-top: 15px;">
           <?php $i = 1; foreach($complete as $comp) : ?>
           <div class="col-2">
             <div class="card">
@@ -73,9 +79,9 @@ $complete = query("SELECT * FROM complete");
               <div class="card-body">
                 <p class="card-text"><?= $comp["judul"]; ?></p>
                 <p class="card-text"><?= $comp["episode"]; ?></p>
-                <p class="card-text"><?= $comp["ratting"]; ?></p>
-                <a href="#" class="btn btn-primary">Ubah</a>
-                <a href="#" class="btn btn-danger">Hapus</a>
+                <p class="card-text">ratting: <?= $comp["ratting"]; ?></p>
+                <a href="ubah.php?id=<?= $comp["id"]; ?>" class="btn btn-primary">Ubah</a>
+                <a href="hapus.php?id=<?= $comp["id"]; ?>" class="btn btn-danger" onclick="return confirm('APAKAH ANDA YAKIN INGIN MENGHAPUSNYA!!!');">Hapus</a>
               </div>
             </div>
           </div>
