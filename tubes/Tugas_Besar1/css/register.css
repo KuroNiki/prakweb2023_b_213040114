@@ -1,0 +1,28 @@
+body {
+    background-color: #060718;
+}
+
+h1 {
+    color: white;
+    margin: 25px;
+    text-align: center;
+    
+}
+
+form {
+    text-align: center;
+}
+
+label {
+    display: block;
+    color: white;
+}
+
+input {
+    margin: 15px;
+}
+
+.log {
+    color: white;
+    margin-top: 10px;
+}

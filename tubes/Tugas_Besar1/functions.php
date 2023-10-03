@@ -117,13 +117,80 @@ function ubah($data) {
 }
 
 
-
+///function cari
 function cari($keyword) {
     $query = "SELECT * FROM complete
                       WHERE
                    judul LIKE '%$keyword%'
                    ";
     return query($query);
+}
+
+///function cari bagian lainya
+function pencarian($search) {
+    $query = "SELECT * FROM top10as
+                      WHERE
+                   judul LIKE '%$search%'
+                   ";
+    return query($query);
+}
+
+///function registrasi
+function registrasi($data) {
+    global $conn;
+
+    $username = strtolower(stripslashes($data["username"]));
+    $password = mysqli_real_escape_string($conn, $data["password"]);
+    $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+
+
+    //cek username sudah ada apa belum
+    $result = mysqli_query($conn, "SELECT username FROM user WHERE
+         username = '$username'");
+    if( mysqli_fetch_assoc($result) ) {
+        echo "<script>
+        alert('Username Sudah Terdaftar!!');
+        </script>";
+        return false;
+    }
+    
+    ///cek konfirmasi pasword
+    if( $password !== $password2 ) {
+        echo "<script>
+        alert('Konfirmasi Password Salah!!');
+        </script>";
+        return false;
+    }
+
+    ///enkripsi password
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+
+    ///Tambahkan user baru ke DB
+    mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password')");
+    return mysqli_affected_rows($conn);
+
+}
+
+///function top10as
+function top10as($query) {
+    global $conn;
+    $result = mysqli_query($conn, $query);
+    $rows = [];
+    while( $row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
+}
+
+function top10a($query) {
+    global $conn;
+    $result = mysqli_query($conn, $query);
+    $rows = [];
+    while( $row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
 }
 
 

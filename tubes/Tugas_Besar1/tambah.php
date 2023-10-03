@@ -1,4 +1,10 @@
 <?php
+session_start();
+if( !isset($_SESSION["login"]) ) {
+  header("location: login.php");
+  exit;
+}
+
 require 'functions.php';
 
 
@@ -49,11 +55,11 @@ require 'functions.php';
                 <input type="text" name="judul" id="judul" required>
             </li>
             <li>
-            <label for="ratting">Ratting</label>
+            <label for="ratting">Publisher</label>
                 <input type="text" name="ratting" id="ratting" required>
             </li>
             <li>
-            <label for="episode">episode</label>
+            <label for="episode">Author</label>
                 <input type="text" name="episode" id="episode" required>
             </li>
             <li>

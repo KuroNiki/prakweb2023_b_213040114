@@ -21,6 +21,7 @@ body {
 
 .navbar-toggler-icon img {
   width: 16px;
+  background-position: center;
 }
 
 .navbar-toggler {
@@ -42,4 +43,8 @@ body {
 
 .col  h2 {
   padding-bottom: 20px;
+}
+
+.row {
+  margin-bottom: 100px;
 }

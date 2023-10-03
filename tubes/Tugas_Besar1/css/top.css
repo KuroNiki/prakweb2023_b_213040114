@@ -1,0 +1,49 @@
+body {
+    padding-bottom: 100px;
+    background-color: #060718;
+  }
+  
+.navbar {
+  background-color: #0b0c2a;
+  margin-bottom: 30px;
+}
+
+.navbar_logo img {
+  position: relative;
+  left: 1cm;
+}
+
+.container {
+    color: white;
+    margin-top: 15px;
+}
+
+.table {
+    color: white;
+}
+
+tbody a {
+    margin-bottom: 6px;
+}
+
+#judul  {
+    font-size: 25px;
+}
+
+img {
+    background-position: center;
+}
+
+h6 {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+#page { 
+  position: relative;
+  margin-top: 65px;
+  margin-left: 5cm;
+}
+.pagination {
+  background-position: center;
+}

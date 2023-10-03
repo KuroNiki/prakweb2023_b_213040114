@@ -1,4 +1,10 @@
 <?php
+session_start();
+if( !isset($_SESSION["login"]) ) {
+  header("location: login.php");
+  exit;
+}
+
 require 'functions.php';
 $complete = query("SELECT * FROM complete");
 
@@ -20,7 +26,7 @@ if( isset($_POST["cari"]) ) {
     <!-- my css -->
     <link rel="stylesheet" href="css/style.css" />
 
-    <title>Nikinikiplay.tubes</title>
+    <title>NikiReads.tubes</title>
   </head>
   <body>
     <!-- navbar -->
@@ -38,7 +44,7 @@ if( isset($_POST["cari"]) ) {
       <div class="collapse navbar-collapse" id="navbarmenu">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">baru rilis</a>
@@ -46,10 +52,9 @@ if( isset($_POST["cari"]) ) {
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Lain </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Top10 Anime dari daftar animelist</a></li>
-              <li><a class="dropdown-item" href="./index.php">Log-In</a></li>
+              <li><a class="dropdown-item" href="top.php">Top10 Anime</a></li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Log-Out</a></li>
+              <li><a class="dropdown-item" href="logout.php">Log-Out</a></li>
             </ul>
           </li>
         </ul>
@@ -67,19 +72,19 @@ if( isset($_POST["cari"]) ) {
       <div class="container">
         <div class="row text-center" style="color: white;">
           <div class="col">
-            <h2>Baru Tamat</h2>
+            <h2>Rekomendasi Sci-Fi & Fantasi</h2>
           </div>
         </div>
-        <a href="tambah.php">Tambah Data Anime Tamat</a>
-        <div class="row" style="padding-top: 15px;">
+        <a href="tambah.php">Tambah Data Recomendasi</a>
+        <div class="row" style="padding-top: 15px; padding-bottom: 10px;">
           <?php $i = 1; foreach($complete as $comp) : ?>
-          <div class="col-2">
+          <div class="col-2" style="padding-top: 100px;">
             <div class="card">
               <img src="img/complete/<?= $comp["gambar"]; ?>" height="300">
               <div class="card-body">
                 <p class="card-text"><?= $comp["judul"]; ?></p>
-                <p class="card-text"><?= $comp["episode"]; ?></p>
-                <p class="card-text">ratting: <?= $comp["ratting"]; ?></p>
+                <p class="card-text">Author: <?= $comp["episode"]; ?></p>
+                <p class="card-text">Publisher: </i> <?= $comp["ratting"]; ?></p>
                 <a href="ubah.php?id=<?= $comp["id"]; ?>" class="btn btn-primary">Ubah</a>
                 <a href="hapus.php?id=<?= $comp["id"]; ?>" class="btn btn-danger" onclick="return confirm('APAKAH ANDA YAKIN INGIN MENGHAPUSNYA!!!');">Hapus</a>
               </div>
